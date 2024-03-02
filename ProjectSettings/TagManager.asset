@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ProjectileParent
   - Projectile
+  - Enemy
+  - Prop
   layers:
   - Default
   - TransparentFX

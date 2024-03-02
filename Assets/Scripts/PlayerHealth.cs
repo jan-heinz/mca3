@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
 
-    int currentHealth;
+    public int currentHealth;
     public Slider healthSlider;
     
     
@@ -45,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void playerDies() {
-        Debug.Log("Player is dead");
-        transform.Rotate(-90, 0, 0, Space.Self);
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        levelManager.LevelLost();
     }
 }
