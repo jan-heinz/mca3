@@ -47,6 +47,10 @@ public class LevelManager : MonoBehaviour
 
         Camera.main.GetComponent<AudioSource>().pitch = 1;
         AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
+
+        if (!string.IsNullOrEmpty(sameLevel)) {
+            Invoke("LoadSameLevel", 2);
+        }
         
     }
 

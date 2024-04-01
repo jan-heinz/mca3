@@ -25,17 +25,20 @@ public class ShootProjectile : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Fire1")) {
-            GameObject projectile = Instantiate(currentProjectilePrefab, transform.position + transform.forward, transform.rotation) as GameObject;
+        if (!LevelManager.isGameOver) {
+            if (Input.GetButtonDown("Fire1")) {
+                GameObject projectile =
+                    Instantiate(currentProjectilePrefab, transform.position + transform.forward,
+                        transform.rotation) as GameObject;
 
-            Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
-            
-            projectile.transform.SetParent(GameObject.FindGameObjectWithTag("ProjectileParent").transform);
-            
+                Rigidbody rb = projectile.GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
+
+                projectile.transform.SetParent(GameObject.FindGameObjectWithTag("ProjectileParent").transform);
+            }
         }
     }
-
+    
     void FixedUpdate() {
         reticleEffect();
     }

@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;
-
+    public int voidHeightKill = -5; // y value at which player dies
     public int currentHealth;
     public Slider healthSlider;
+
+    bool isDead = false;
     
     
     
@@ -22,7 +24,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.y < voidHeightKill && !isDead) {
+            playerDies();
+        }
     }
 
     public void takeDamage(int damageAmount) {
@@ -45,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     void playerDies() {
+        isDead = true;
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         levelManager.LevelLost();
     }
